@@ -122,7 +122,7 @@ int main()
 	dimensions, etc.
 	*/
 	IrrlichtDevice *device =
-		createDevice( video::EDT_SOFTWARE, dimension2d<u32>(640, 480), 16,
+		createDevice( video::EDT_OPENGL, dimension2d<u32>(1080, 720), 16,
 			false, false, false, 0);
 
 	if (!device)
@@ -133,7 +133,7 @@ int main()
 	'L' in front of the string. The Irrlicht Engine uses wide character
 	strings when displaying text.
 	*/
-	device->setWindowCaption(L"Hello World! - Irrlicht Engine Demo");
+	device->setWindowCaption(L"Hello World! - Irrlicht Engine DemoÄãºÃ");
 
 	/*
 	Get a pointer to the VideoDriver, the SceneManager and the graphical
@@ -151,7 +151,7 @@ int main()
 	(260,22) as lower right corner.
 	*/
 	guienv->addStaticText(L"Hello World! This is the Irrlicht Software renderer!",
-		rect<s32>(10,10,260,22), true);
+		rect<s32>(10,10,260,22), false);
 
 	/*
 	To show something interesting, we load a Quake 2 model and display it.
@@ -185,7 +185,7 @@ int main()
 	{
 		node->setMaterialFlag(EMF_LIGHTING, false);
 		node->setMD2Animation(scene::EMAT_STAND);
-		node->setMaterialTexture( 0, driver->getTexture("../../media/sydney.bmp") );
+		node->setMaterialTexture( 0, driver->getTexture("../../media/nskinbl.jpg") );
 	}
 
 	/*
