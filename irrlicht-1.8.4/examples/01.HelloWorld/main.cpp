@@ -195,6 +195,16 @@ int main()
 	*/
 	smgr->addCameraSceneNode(0, vector3df(0,30,-40), vector3df(0,5,0));
 
+
+	scene::ISceneNodeAnimator* anim =
+		smgr->createRotationAnimator(core::vector3df(0.8f, 0, 0.8f));
+
+	if (anim)
+	{
+		node->addAnimator(anim);
+		anim->drop();
+		anim = 0;
+	}
 	/*
 	Ok, now we have set up the scene, lets draw everything: We run the
 	device in a while() loop, until the device does not want to run any
