@@ -98,7 +98,7 @@ int main()
 	if (node)
 	{
 		node->setPosition(core::vector3df(0,0,30));
-		node->setMaterialTexture(0, driver->getTexture("../../media/wall.bmp"));
+		node->setMaterialTexture(0, driver->getTexture("../../media/t351sml.jpg"));
 		node->setMaterialFlag(video::EMF_LIGHTING, false);
 	}
 
@@ -115,7 +115,7 @@ int main()
 
 	if (n)
 	{
-		n->setMaterialTexture(0, driver->getTexture("../../media/t351sml.jpg"));
+		n->setMaterialTexture(0, driver->getTexture("../../media/wall.bmp"));
 		n->setMaterialFlag(video::EMF_LIGHTING, false);
 		scene::ISceneNodeAnimator* anim =
 			smgr->createFlyCircleAnimator(core::vector3df(0,0,30), 20.0f);
@@ -136,8 +136,9 @@ int main()
 	if (anms)
 	{
 		scene::ISceneNodeAnimator* anim =
-			smgr->createFlyStraightAnimator(core::vector3df(100,0,60),
-			core::vector3df(-100,0,60), 3500, true);
+			// smgr->createFlyStraightAnimator(core::vector3df(100,0,60),
+			//core::vector3df(-100,0,60), 3500, true);
+			smgr->createFlyCircleAnimator(core::vector3df(0, 0, 30), 20.0f, 0.002);
 		if (anim)
 		{
 			anms->addAnimator(anim);

@@ -55,7 +55,7 @@ int main()
 	makeColorKeyTexture just creates an alpha channel based on the color.
 	*/
 	video::ITexture* images = driver->getTexture("../../media/2ddemo.png");
-	driver->makeColorKeyTexture(images, core::position2d<s32>(0,0));
+	driver->makeColorKeyTexture(images, core::position2d<s32>(10,25));
 
 	/*
 	To be able to draw some text with two different fonts, we first load
@@ -68,7 +68,8 @@ int main()
 	gui::IGUIFont* font2 =
 		device->getGUIEnvironment()->getFont("../../media/fonthaettenschweiler.bmp");
 
-	core::rect<s32> imp1(349,15,385,78);
+	//core::rect<s32> imp1(349,15,385,78);
+	core::rect<s32> imp1(349, 15, 370, 70);
 	core::rect<s32> imp2(387,15,423,78);
 
 	/*
@@ -106,11 +107,11 @@ int main()
 			// draw fire & dragons background world
 			driver->draw2DImage(images, core::position2d<s32>(50,50),
 				core::rect<s32>(0,0,342,224), 0,
-				video::SColor(255,255,255,255), true);
+				video::SColor(255,0,255,255), true);
 
 			// draw flying imp
 			driver->draw2DImage(images, core::position2d<s32>(164,125),
-				(time/500 % 2) ? imp1 : imp2, 0,
+				(time / 500 % 2) ? imp1 : imp2, 0,
 				video::SColor(255,255,255,255), true);
 
 			// draw second flying imp with colorcylce
@@ -124,11 +125,18 @@ int main()
 			*/
 
 			// draw some text
-			if (font)
-				font->draw(L"This demo shows that Irrlicht is also capable of drawing 2D graphics.",
+			if (font) {
+				/*font->draw(L"This demo shows that Irrlicht is also capable of drawing 2D .",
 					core::rect<s32>(130,10,300,50),
-					video::SColor(255,255,255,255));
+					video::SColor(255,255,255,255));*/
+				core::stringw str = L"This demo shows that Irrlicht is also capable of drawing 2D .";
+				str += (time);
+				str += "!";
 
+				font->draw(str,
+					core::rect<s32>(130, 10, 300, 50),
+					video::SColor(255, 255, 255, 255));
+			}
 			// draw some other text
 			if (font2)
 				font2->draw(L"Also mixing with 3d graphics is possible.",
@@ -149,6 +157,7 @@ int main()
 			Finally draw a half-transparent rect under the mouse cursor.
 			*/
 			core::position2d<s32> m = device->getCursorControl()->getPosition();
+			device->getCursorControl()->setVisible(false);
 			driver->draw2DRectangle(video::SColor(100,255,255,255),
 				core::rect<s32>(m.X-20, m.Y-20, m.X+20, m.Y+20));
 
