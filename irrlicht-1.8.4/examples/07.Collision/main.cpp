@@ -153,7 +153,8 @@ int main()
 	// Add the billboard.
 	scene::IBillboardSceneNode * bill = smgr->addBillboardSceneNode();
 	bill->setMaterialType(video::EMT_TRANSPARENT_ADD_COLOR );
-	bill->setMaterialTexture(0, driver->getTexture("../../media/particle.bmp"));
+	//bill->setMaterialTexture(0, driver->getTexture("../../media/particle.bmp"));
+	bill->setMaterialTexture(0, driver->getTexture("../../media/particlegreen.jpg"));
 	bill->setMaterialFlag(video::EMF_LIGHTING, false);
 	bill->setMaterialFlag(video::EMF_ZBUFFER, false);
 	bill->setSize(core::dimension2d<f32>(20.0f, 20.0f));
@@ -289,7 +290,7 @@ int main()
 			// We need to reset the transform before doing our own rendering.
 			driver->setTransform(video::ETS_WORLD, core::matrix4());
 			driver->setMaterial(material);
-			driver->draw3DTriangle(hitTriangle, video::SColor(0,255,0,0));
+			driver->draw3DTriangle(hitTriangle, video::SColor(0,255,242,0));
 
 			// We can check the flags for the scene node that was hit to see if it should be
 			// highlighted. The animated nodes can be highlighted, but not the Quake level mesh
